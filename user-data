@@ -1,0 +1,19 @@
+#cloud-config
+autoinstall:
+  version: 1
+
+  ssh:
+    install-server: yes
+
+  identity:
+    hostname: ubuntu-server
+    password: $1$sgkEHjNc$fCwz3h.mUGzhXy4ien.km1
+    username: ubuntu
+
+  storage:
+    layout:
+      name: lvm
+
+  late-commands:
+    - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/sysuser
+    - sudo shutdown -h now

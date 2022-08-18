@@ -1,0 +1,17 @@
+allow bootp;
+allow booting;
+default-lease-time 1600;
+max-lease-time 7200;
+authoritative;
+
+subnet $PXE_SUBNET netmask $PXE_NETMASK {
+  range $PXE_RANGE_LOW $PXE_RANGE_HIGH;
+  option routers $PXE_GATEWAY;
+  option domain-name-servers 127.0.0.1;
+  option subnet-mask $PXE_NETMASK;
+  option broadcast-address $PXE_BROADCAST;
+  next-server $PXE_IP;
+  filename "syslinux.efi";
+  default-lease-time 3600;
+  max-lease-time 7200;
+}

@@ -1,0 +1,18 @@
+DISPLAY boot.msg
+TIMEOUT 10
+ONTIMEOUT 1
+DEFAULT 1
+PROMPT 0
+NOESCAPE 1
+
+LABEL 1
+  MENU LABEL Install Ubuntu Server 20.04
+  KERNEL vmlinuz
+  INITRD initrd
+  APPEND url=http://$PXE_IP/images/ubuntu-20.04.4-live-server-amd64.iso autoinstall ds=nocloud-net;s=http://$PXE_IP/ks/ cloud-config-url=/dev/null ip=dhcp fsck.mode=skip ---
+
+LABEL 2
+  MENU LABEL Boot from local drive
+  localboot 0
+
+MENU END
